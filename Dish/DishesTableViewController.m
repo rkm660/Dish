@@ -25,6 +25,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     _Dishes = @[@"Dish1",@"Dish2",@"Dish3",@"Dish4",@"Dish5"];
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    testObject[@"foo"] = @"bar";
+    [testObject saveInBackground];
 }
 
 - (void)didReceiveMemoryWarning {
