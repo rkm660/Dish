@@ -23,11 +23,27 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _Dishes = [[NSMutableArray alloc] init];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"Dishes"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        if (!error) {
+            
+            for (PFObject *object in objects) {
+                NSString * dishName = [object objectForKey:@"Name"];
+                [_Dishes addObject:dishName];
+            }
+        } else {
+
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+        [_dishesTableView reloadData];
     
-    _Dishes = @[@"Dish1",@"Dish2",@"Dish3",@"Dish4",@"Dish5"];
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"bar";
-    [testObject saveInBackground];
+    }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +62,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [_Dishes count];
+    return _Dishes.count;
 }
 
 

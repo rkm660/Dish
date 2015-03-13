@@ -11,7 +11,8 @@
 
 @interface DishesTableViewController : UITableViewController
 
-@property (nonatomic, strong) NSArray * Dishes;
+@property (nonatomic, strong) NSMutableArray * Dishes;
 
+@property (strong, nonatomic) IBOutlet UITableView *dishesTableView;
 
 @end

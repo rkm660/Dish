@@ -29,6 +29,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Dishes" id="Ob4-Kk-oeV"/>
+                    <connections>
+                        <outlet property="dishesTableView" destination="EDg-I6-gWx" id="2yp-SL-HEN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GF1-JG-RrS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
